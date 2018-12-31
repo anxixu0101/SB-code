@@ -1,0 +1,55 @@
+%%改造前路径计算
+road=[0 0 0 0 0 0 0 0 0;
+      1 0 1 0 0 0 0 0 0;
+      0 0 0 0 0 0 0 0 0;
+      1 0 0 0 1 0 0 0 0;
+      0 1 0 1 0 1 0 0 0;
+      0 0 1 0 1 0 0 0 0;
+      0 0 0 1 0 0 0 1 0;
+      0 0 0 0 0 0 0 0 0;
+      0 0 0 0 0 1 0 1 0;
+    ]%关联矩阵
+%%先计算1~9 横坐标起点，纵坐标终点
+%% 后向计算
+for m=1:9
+    if road(9,m)==1
+       fprintf("%d\n",m)%% 得到两个可以直接到达9的点
+    end
+end
+%% 前向计算
+for k=1:9
+    if road(k,1)==1
+        for n=1:9
+            if (road(n,k)==1&&n~=k)
+                %fprintf("%d,%d\n",k,n)
+                for l=1:9
+                    if(road(l,n)==1&&l~=n&&l~=k)
+                        fprintf("得到的1到9的路径如下：%d,%d,%d,%d,%d\n",1,k,n,l,9)
+                    end
+                end
+                
+            end
+        end
+    end
+end
+%%计算到3~7
+for p=1:9
+    if road(7,p)==1
+        fprintf("p=%d\n",p)%% 得到可以到达7的点
+    end
+end
+    for k=3:9
+    if road(k,3)==1
+        for n=1:9
+            if (road(n,k)==1&&n~=k)
+                %fprintf("%d,%d\n",k,n)
+                for l=1:9
+                    if(road(l,n)==1&&l~=n&&l~=k)
+                        fprintf("得到的3到7的路径如下：%d,%d,%d,%d,%d\n",3,k,n,l,7)
+                    end
+                end
+                
+            end
+        end
+    end
+end
